@@ -2,7 +2,7 @@ from flask import Flask, request,render_template
 
 app=Flask(__name__)
 
-usuarios=[]
+usuario=[]
 
 id_contador=1
 
@@ -12,8 +12,20 @@ def crud():
     if request.method=="POST":
         nombre=request.form["nombre"]
         correo=request.form["correo"]
+        usuario.append({"id":id_contador,"nombre":nombre,"correo":correo})
+        id_contador+=1
+        # print(usuario) 
 
-    return render_template("crud.html")
+    eliminar_id=request.args.get("eliminar")
+    if eliminar_id:
+        for diccionario in usuario:
+            if str(diccionario["id"])== eliminar_id:
+                usuario.remove(diccionario)
+                break
+
+    return render_template("crud.html",usuario=usuario)
+
+
 
 
 

@@ -1,6 +1,7 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(110, 162, 230);
+    min-height: 100vh;
+    background-color: rgb(245, 246, 248);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,12 +9,38 @@ body{
 }
 
 .contenedor{
-    background-color: rgb(110, 110, 216);
-    border-radius: 10px;
+    background-color: rgb(180, 180, 241);
+    border-radius: 0px;
     max-width: 600px;
-    box-shadow: 0px 0px 40px yellow;
-    padding: 20px;
+    box-shadow: 0px 0px 10px rgb(32, 32, 32);
+    padding: 40px;
     width: 90%;
-  
+}
 
+form input {
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: red;
+    border-radius:  10px;
+    color: aquamarine;
+    cursor: pointer;
+    border: none;
+
+
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px;
+
+}
+table,th,td {
+
+    border: 2px solid rgb(247, 244, 244);
+    text-align: center;
 }

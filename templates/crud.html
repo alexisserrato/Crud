@@ -8,13 +8,33 @@
 </head>
 <body>
 <div class="contenedor">
-    <h2>USUARIO</h2>
+    <h2 style="color: white;">USUARIO</h2>
     <form method="post" >
         <input type="text" placeholder="Ingrese su nombre" name="nombre">
         <input type="text"placeholder="Ingrese su correo" name="correo">
     <button>REGISTRAR</button>
     </form>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE USUARIO</th>
+        <th>CORREO USUARIO</th>
+        <th>ACCIONES</th>
+    </tr>
+{% for persona in usuario %}
+    <tr>
+        <td>{{ persona.id }}</td>
+        <td>{{ persona.nombre }}</td>
+        <td>{{ persona.correo }}</td>
+        <td><a href="/?eliminar={{persona.id}}">Eliminar</a></td>
+    </tr>
 
+
+    {% endfor %}
+
+
+
+</table>
 
 
 
