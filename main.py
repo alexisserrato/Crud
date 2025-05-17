@@ -1,4 +1,4 @@
-from flask import Flask, request,render_template
+from flask import Flask, request,render_template,redirect,url_for
 
 app=Flask(__name__)
 
@@ -24,6 +24,23 @@ def crud():
                 break
 
     return render_template("crud.html",usuario=usuario)
+
+@app.route("/update/<int:id>", methods=["GET", "POST"])
+def update(id):
+    #TODO: capturar y buscar el usuario a editar
+    for diccionario in usuario: # para cada diccionario dentro dela lista evalue:
+      if diccionario['id']==id: #si el id convertido a string es igual al id que me pasan por parametro
+        usuario_a_editar=diccionario #hemos identificado los datos del usuario a editar
+        break
+    #TODO: actulizar la información del usuario seleccionado
+     
+    if request.method=="POST":
+        usuario_a_editar["nombre"]=request.form.get("nombre")# el nombre nuevo será el que llegue por un nuevo formulario
+        usuario_a_editar["correo"]=request.form.get("correo")# el correo nuevo será el que llegue por un nuevo formulario
+
+        return redirect(url_for("crud"))# redirecciona la aplicación a la ruta de la función crud
+     
+    return render_template('editar.html', usuario_a_editar=usuario_a_editar)
 
 
 
